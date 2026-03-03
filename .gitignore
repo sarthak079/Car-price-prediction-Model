@@ -1,0 +1,43 @@
+# --- Python Basics ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+env/
+venv/
+ENV/
+
+# --- Environment & Configuration ---
+.env
+.venv
+.python-version
+.vscode/
+.idea/
+
+# --- Machine Learning & Data ---
+# Exclude large data files, models, and datasets
+*.csv
+*.tsv
+*.parquet
+*.pkl
+*.joblib
+*.h5
+*.keras
+*.onnx
+data/
+datasets/
+models/
+
+# --- Logs & Outputs ---
+*.log
+*.tmp
+*.bak
+*.cache
+htmlcov/
+.coverage
+.pytest_cache/
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
