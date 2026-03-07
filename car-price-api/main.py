@@ -1,39 +1,18 @@
-import warnings
-from fastapi import FastAPI
+from fastapi import FastAPI,HTTPException
 from fastapi.responses import JSONResponse
-from .schema import CarFeatures, PredictionResponse
-from .model import predict_price, load_artifacts
-from fastapi.middleware.cors import CORSMiddleware
-from sklearn.exceptions import InconsistentVersionWarning
+from .schema import CarFeatures,PredictionResponse
+from .model import predict_price,load_artifacts
 
-# This hides the specific version warning
-warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
-
-app = FastAPI(title="Car Price Prediction API", version="1.0")
-
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # later you can restrict to your streamlit domain
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
+app=FastAPI(title="Car Price Prediction API", version="1.0")
 
 @app.on_event("startup")
 def startup_event():
     load_artifacts()
-
-
 @app.get("/")
 def test():
-    return JSONResponse(
-        status_code=200, content={"success": True, "message": "this is test route"}
-    )
+    return JSONResponse(status_code=200,content={"success": True, "message": "this is test route"})
 
-
-@app.post("/predict", response_model=PredictionResponse)
+@app.post("/predict",response_model=PredictionResponse)
 def predict(features: CarFeatures):
-    price = predict_price(features.model_dump())
+    price=predict_price(features.model_dump())
     return PredictionResponse(prediction_price=price)

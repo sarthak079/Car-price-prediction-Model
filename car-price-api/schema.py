@@ -1,35 +1,27 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel,Field
 from enum import Enum
 
 
-class FuelType(str, Enum):
-    petrol = "Petrol"
-    diesel = "Diesel"
-    cng = "CNG"
-
-
-class SellerType(str, Enum):
-    dealer = "Dealer"
-    individual = "Individual"
-
-
+class FuelType(str,Enum):
+    Petrol = "Petrol"
+    Diesel = "Diesel"
+    CNG = "CNG"
+class Seller_Type(str, Enum):
+    Dealer = "Dealer"
+    Individual = "Individual"
 class TransmissionType(str, Enum):
-    manual = "Manual"
-    automatic = "Automatic"
-
+    Manual = "Manual"
+    Automatic = "Automatic"
 
 class CarFeatures(BaseModel):
-    Car_Name: str = Field(..., example="ritz")
-    Year: int = Field(..., example=2014)
-    Present_Price: float = Field(..., example=5.59)
-    Kms_Driven: int = Field(..., example=27000)
-    Fuel_Type: FuelType
-    Seller_Type: SellerType
-    Transmission: TransmissionType
-    Owner: int = Field(
-        ..., ge=0, le=3, example=0, description="Number of previous owners (0,1 or 3)"
-    )
-
+    Car_name: str=Field(...,examples=["ritz"])
+    Year: str=Field(...,examples=["2014"])
+    Present_price:float=Field(...,examples=[5.59])
+    Kms_Driven:int=Field(...,examples=[27000])
+    Fuel_Type:FuelType
+    Seller_Type:Seller_Type
+    Transmission:TransmissionType
+    Owner: int=Field(...,ge=0,le=3,examples=[0],description="Number of previous owners, should be between 0 and 3")
 
 class PredictionResponse(BaseModel):
-    prediction_price: float
+    prediction_price: float=Field(...,examples=[3.5])
