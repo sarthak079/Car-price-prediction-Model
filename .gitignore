@@ -17,7 +17,6 @@ ENV/
 
 # --- Machine Learning & Data ---
 # Exclude large data files, models, and datasets
-*.csv
 *.tsv
 *.parquet
 *.joblib
