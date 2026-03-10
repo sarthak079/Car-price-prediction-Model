@@ -14,10 +14,10 @@ class TransmissionType(str, Enum):
     Automatic = "Automatic"
 
 class CarFeatures(BaseModel):
-    Car_name: str=Field(...,examples=["ritz"])
-    Year: str=Field(...,examples=["2014"])
-    Present_price:float=Field(...,examples=[5.59])
-    Kms_Driven:int=Field(...,examples=[27000])
+    Car_name: str=Field(...,alias="Car_Name",examples=["ritz"])
+    Year: str=Field(...,alias="Year",examples=["2014"])
+    Present_price:float=Field(...,alias="Present_Price",examples=[5.59])
+    Kms_Driven:int=Field(...,alias="Kms_Driven",examples=[27000])
     Fuel_Type:FuelType
     Seller_Type:Seller_Type
     Transmission:TransmissionType
