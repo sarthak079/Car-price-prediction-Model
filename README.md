@@ -27,4 +27,5 @@ streamlit run car-price-api/streamlit_app.py
 Bachend is deployes using Render and 
 Frontend is deployed using Streamlit
 
-project access: https://car-price-prediction-model-nab9kag6bqyyzidmwxvs6k.streamlit.app/
+Frontend: https://car-price-prediction-model-nab9kag6bqyyzidmwxvs6k.streamlit.app/
+Backend: https://car-price-prediction-model-wmb0.onrender.com
