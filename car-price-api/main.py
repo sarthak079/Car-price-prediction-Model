@@ -1,7 +1,7 @@
 from fastapi import FastAPI,HTTPException
 from fastapi.responses import JSONResponse
-from schema import CarFeatures,PredictionResponse
-from model import predict_price,load_artifacts
+from .schema import CarFeatures,PredictionResponse
+from .model import predict_price,load_artifacts
 from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI(title="Car Price Prediction API", version="1.0")
@@ -22,5 +22,6 @@ def test():
 
 @app.post("/predict",response_model=PredictionResponse)
 def predict(features: CarFeatures):
+    print(f"Payload received: {features.model_dump()}")
     price=predict_price(features.model_dump())
     return PredictionResponse(prediction_price=price)
