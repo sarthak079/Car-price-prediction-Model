@@ -14,14 +14,14 @@ class TransmissionType(str, Enum):
     Automatic = "Automatic"
 
 class CarFeatures(BaseModel):
-    Car_name: str=Field(...,alias="Car_Name",examples=["ritz"])
-    Year: str=Field(...,alias="Year",examples=["2014"])
-    Present_price:float=Field(...,alias="Present_Price",examples=[5.59])
-    Kms_Driven:int=Field(...,alias="Kms_Driven",examples=[27000])
-    Fuel_Type:FuelType
-    Seller_Type:Seller_Type
-    Transmission:TransmissionType
-    Owner: int=Field(...,ge=0,le=3,examples=[0],description="Number of previous owners, should be between 0 and 3")
+    Car_name: str = Field(..., alias="Car_Name")
+    Year: int = Field(...) # Changed to int to match your JSON data
+    Present_price: float = Field(..., alias="Present_Price")
+    Kms_driven: int = Field(..., alias="Kms_Driven")
+    Fuel_type: str = Field(..., alias="Fuel_Type")
+    Seller_type: str = Field(..., alias="Seller_Type")
+    Transmission: str = Field(...) 
+    Owner: int = Field(...)
 
 class PredictionResponse(BaseModel):
     prediction_price: float=Field(...,examples=[3.5])
