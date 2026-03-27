@@ -24,7 +24,7 @@ uvicorn car-price-api.main:app --reload
 Launch the Dashboard:
 streamlit run car-price-api/streamlit_app.py
 
-Bachend is deployes using Render and 
+Backend is deployes using Render and 
 Frontend is deployed using Streamlit
 
 Frontend: https://car-price-prediction-model-nab9kag6bqyyzidmwxvs6k.streamlit.app/
